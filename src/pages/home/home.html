@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title align="center">
+      Button App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <!-- App Information -->
+    <ion-row>
+      <ion-col text-center>
+        <h2>Enter the right Code</h2>
+        <p *ngIf="!didWin()">Tap twice, press four times</p>
+        <p *ngIf="didWin()">You Won!</p>
+      </ion-col>
+    </ion-row>
+
+    <!-- Button Tracking List -->
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <p>Tapped: {{ tapped }}</p>
+          </ion-item>
+          <ion-item>
+            <p>Pressed: {{ pressed }}</p>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    
+    <!-- Reset Buttons -->
+    <app-reset (didReset)="onDidReset($event)"></app-reset>
+
+    <!-- Buttoms to Tap and Press -->
+    <ion-row>
+      <ion-col 
+        style="background-color:lightgreen"
+        text-center
+        (tap)="onTap()">Tap Here</ion-col>
+        <ion-col 
+        style="background-color:lightgreen"
+        text-center
+        (tap)="onPress()">Press Here</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
